@@ -1,0 +1,26 @@
+﻿@model BirdProject.Models.B學名
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>B學名</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bird學名)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bird學名)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Bird學名Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

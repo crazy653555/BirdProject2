@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="804f2534b244444a9b3b62dae1052d21" Name="Diagram1">
+        <EntityTypeShape EntityType="BirdModel.B狀態" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BirdModel.B鳥" Width="1.5" PointX="3.375" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BirdModel.B鳥奴" Width="1.5" PointX="1" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BirdModel.B腳環" Width="1.5" PointX="5.875" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BirdModel.B學名" Width="1.5" PointX="3.375" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="BirdModel.FK_B鳥_B狀態1" ManuallyRouted="false" />
+        <AssociationConnector Association="BirdModel.FK_B鳥_B鳥奴1" ManuallyRouted="false" />
+        <AssociationConnector Association="BirdModel.FK_B鳥_B學名1" ManuallyRouted="false" />
+        <AssociationConnector Association="BirdModel.FK_B腳環_B鳥1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BirdModel.test" Width="1.5" PointX="0.75" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

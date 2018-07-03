@@ -1,0 +1,66 @@
+﻿@model IEnumerable<BirdProject.Models.B鳥>
+
+@{
+    ViewBag.Title = "小雞清單";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VerificationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirdGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B學名.Bird學名)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.B狀態.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisteredTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VerificationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirdName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirdGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.B學名.Bird學名)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.B狀態.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisteredTime)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VerificationId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VerificationId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VerificationId })
+            </td>
+        </tr>
+    }
+
+</table>

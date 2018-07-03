@@ -1,0 +1,72 @@
+﻿@model BirdProject.Models.B鳥
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>B鳥</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BirdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirdGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirdGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisteredTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisteredTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B狀態.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B狀態.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B鳥奴.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B鳥奴.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B學名.Bird學名)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B學名.Bird學名)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

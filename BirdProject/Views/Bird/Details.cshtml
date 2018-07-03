@@ -1,0 +1,66 @@
+﻿@model BirdProject.Models.B鳥
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>B鳥</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BirdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirdGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirdGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisteredTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisteredTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B狀態.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B狀態.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B鳥奴.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B鳥奴.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.B學名.Bird學名)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.B學名.Bird學名)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VerificationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

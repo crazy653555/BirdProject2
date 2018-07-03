@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BirdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="B狀態">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B鳥">
+          <Key>
+            <PropertyRef Name="VerificationId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="VerificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BirdName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="BirdGender" Type="nvarchar" MaxLength="6" />
+          <Property Name="Bird學名Id" Type="int" />
+          <Property Name="RegisteredTime" Type="datetime" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B鳥奴">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B腳環">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VerificationId" Type="int" Nullable="false" />
+          <Property Name="Bird左右腳" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Bird腳環類型" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Bird腳環顏色" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Bird腳環號碼" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B學名">
+          <Key>
+            <PropertyRef Name="Bird學名Id" />
+          </Key>
+          <Property Name="Bird學名Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bird學名" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_B鳥_B狀態1">
+          <End Role="B狀態" Type="Self.B狀態" Multiplicity="1" />
+          <End Role="B鳥" Type="Self.B鳥" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B狀態">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="B鳥">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B鳥_B鳥奴1">
+          <End Role="B鳥奴" Type="Self.B鳥奴" Multiplicity="1" />
+          <End Role="B鳥" Type="Self.B鳥" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B鳥奴">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="B鳥">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B鳥_B學名1">
+          <End Role="B學名" Type="Self.B學名" Multiplicity="0..1" />
+          <End Role="B鳥" Type="Self.B鳥" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B學名">
+              <PropertyRef Name="Bird學名Id" />
+            </Principal>
+            <Dependent Role="B鳥">
+              <PropertyRef Name="Bird學名Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B腳環_B鳥1">
+          <End Role="B鳥" Type="Self.B鳥" Multiplicity="1" />
+          <End Role="B腳環" Type="Self.B腳環" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B鳥">
+              <PropertyRef Name="VerificationId" />
+            </Principal>
+            <Dependent Role="B腳環">
+              <PropertyRef Name="VerificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BirdModelStoreContainer">
+          <EntitySet Name="B狀態" EntityType="Self.B狀態" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B鳥" EntityType="Self.B鳥" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B鳥奴" EntityType="Self.B鳥奴" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B腳環" EntityType="Self.B腳環" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="B學名" EntityType="Self.B學名" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_B鳥_B狀態1" Association="Self.FK_B鳥_B狀態1">
+            <End Role="B狀態" EntitySet="B狀態" />
+            <End Role="B鳥" EntitySet="B鳥" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B鳥_B鳥奴1" Association="Self.FK_B鳥_B鳥奴1">
+            <End Role="B鳥奴" EntitySet="B鳥奴" />
+            <End Role="B鳥" EntitySet="B鳥" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B鳥_B學名1" Association="Self.FK_B鳥_B學名1">
+            <End Role="B學名" EntitySet="B學名" />
+            <End Role="B鳥" EntitySet="B鳥" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B腳環_B鳥1" Association="Self.FK_B腳環_B鳥1">
+            <End Role="B鳥" EntitySet="B鳥" />
+            <End Role="B腳環" EntitySet="B腳環" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BirdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="B狀態">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="B鳥" Relationship="Self.FK_B鳥_B狀態1" FromRole="B狀態" ToRole="B鳥" />
+        </EntityType>
+        <EntityType Name="B鳥">
+          <Key>
+            <PropertyRef Name="VerificationId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="VerificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BirdName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirdGender" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Bird學名Id" Type="Int32" />
+          <Property Name="RegisteredTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="B狀態" Relationship="Self.FK_B鳥_B狀態1" FromRole="B鳥" ToRole="B狀態" />
+          <NavigationProperty Name="B鳥奴" Relationship="Self.FK_B鳥_B鳥奴1" FromRole="B鳥" ToRole="B鳥奴" />
+          <NavigationProperty Name="B學名" Relationship="Self.FK_B鳥_B學名1" FromRole="B鳥" ToRole="B學名" />
+          <NavigationProperty Name="B腳環" Relationship="Self.FK_B腳環_B鳥1" FromRole="B鳥" ToRole="B腳環" />
+        </EntityType>
+        <EntityType Name="B鳥奴">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="B鳥" Relationship="Self.FK_B鳥_B鳥奴1" FromRole="B鳥奴" ToRole="B鳥" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B腳環">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VerificationId" Type="Int32" Nullable="false" />
+          <Property Name="Bird左右腳" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Bird腳環類型" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bird腳環顏色" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bird腳環號碼" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="B鳥" Relationship="Self.FK_B腳環_B鳥1" FromRole="B腳環" ToRole="B鳥" />
+        </EntityType>
+        <EntityType Name="B學名">
+          <Key>
+            <PropertyRef Name="Bird學名Id" />
+          </Key>
+          <Property Name="Bird學名Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bird學名" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="B鳥" Relationship="Self.FK_B鳥_B學名1" FromRole="B學名" ToRole="B鳥" />
+        </EntityType>
+        <Association Name="FK_B鳥_B狀態1">
+          <End Role="B狀態" Type="Self.B狀態" Multiplicity="1" />
+          <End Role="B鳥" Type="Self.B鳥" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B狀態">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="B鳥">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B鳥_B鳥奴1">
+          <End Role="B鳥奴" Type="Self.B鳥奴" Multiplicity="1" />
+          <End Role="B鳥" Type="Self.B鳥" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B鳥奴">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="B鳥">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B鳥_B學名1">
+          <End Role="B學名" Type="Self.B學名" Multiplicity="0..1" />
+          <End Role="B鳥" Type="Self.B鳥" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B學名">
+              <PropertyRef Name="Bird學名Id" />
+            </Principal>
+            <Dependent Role="B鳥">
+              <PropertyRef Name="Bird學名Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B腳環_B鳥1">
+          <End Role="B鳥" Type="Self.B鳥" Multiplicity="1" />
+          <End Role="B腳環" Type="Self.B腳環" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="B鳥">
+              <PropertyRef Name="VerificationId" />
+            </Principal>
+            <Dependent Role="B腳環">
+              <PropertyRef Name="VerificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BirdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="B狀態" EntityType="Self.B狀態" />
+          <EntitySet Name="B鳥" EntityType="Self.B鳥" />
+          <EntitySet Name="B鳥奴" EntityType="Self.B鳥奴" />
+          <EntitySet Name="B腳環" EntityType="Self.B腳環" />
+          <EntitySet Name="B學名" EntityType="Self.B學名" />
+          <AssociationSet Name="FK_B鳥_B狀態1" Association="Self.FK_B鳥_B狀態1">
+            <End Role="B狀態" EntitySet="B狀態" />
+            <End Role="B鳥" EntitySet="B鳥" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B鳥_B鳥奴1" Association="Self.FK_B鳥_B鳥奴1">
+            <End Role="B鳥奴" EntitySet="B鳥奴" />
+            <End Role="B鳥" EntitySet="B鳥" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B鳥_B學名1" Association="Self.FK_B鳥_B學名1">
+            <End Role="B學名" EntitySet="B學名" />
+            <End Role="B鳥" EntitySet="B鳥" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B腳環_B鳥1" Association="Self.FK_B腳環_B鳥1">
+            <End Role="B鳥" EntitySet="B鳥" />
+            <End Role="B腳環" EntitySet="B腳環" />
+          </AssociationSet>
+          <EntitySet Name="test" EntityType="BirdModel.test" />
+        </EntityContainer>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BirdModelStoreContainer" CdmEntityContainer="BirdEntities">
+          <EntitySetMapping Name="B狀態">
+            <EntityTypeMapping TypeName="BirdModel.B狀態">
+              <MappingFragment StoreEntitySet="B狀態">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B鳥">
+            <EntityTypeMapping TypeName="BirdModel.B鳥">
+              <MappingFragment StoreEntitySet="B鳥">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VerificationId" ColumnName="VerificationId" />
+                <ScalarProperty Name="BirdName" ColumnName="BirdName" />
+                <ScalarProperty Name="BirdGender" ColumnName="BirdGender" />
+                <ScalarProperty Name="Bird學名Id" ColumnName="Bird學名Id" />
+                <ScalarProperty Name="RegisteredTime" ColumnName="RegisteredTime" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B鳥奴">
+            <EntityTypeMapping TypeName="BirdModel.B鳥奴">
+              <MappingFragment StoreEntitySet="B鳥奴">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B腳環">
+            <EntityTypeMapping TypeName="BirdModel.B腳環">
+              <MappingFragment StoreEntitySet="B腳環">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VerificationId" ColumnName="VerificationId" />
+                <ScalarProperty Name="Bird左右腳" ColumnName="Bird左右腳" />
+                <ScalarProperty Name="Bird腳環類型" ColumnName="Bird腳環類型" />
+                <ScalarProperty Name="Bird腳環顏色" ColumnName="Bird腳環顏色" />
+                <ScalarProperty Name="Bird腳環號碼" ColumnName="Bird腳環號碼" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B學名">
+            <EntityTypeMapping TypeName="BirdModel.B學名">
+              <MappingFragment StoreEntitySet="B學名">
+                <ScalarProperty Name="Bird學名Id" ColumnName="Bird學名Id" />
+                <ScalarProperty Name="Bird學名" ColumnName="Bird學名" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test">
+            <EntityTypeMapping TypeName="BirdModel.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
