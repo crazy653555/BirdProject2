@@ -1,0 +1,15 @@
+﻿
+@if (User.Identity.IsAuthenticated)
+{
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="@Url.Action("Index", "Bird")">鳥寶清單<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index", "BirdSlave")">鳥奴</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Index", "Help")">API</a>
+        </li>
+    </ul>
+}

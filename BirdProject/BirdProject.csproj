@@ -194,7 +194,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BirdController.cs" />
     <Compile Include="Controllers\BirdSlaveController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\testsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -250,6 +250,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Imgs\bird.png" />
     <Content Include="Models\BirdDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BirdDataModel.Context.cs</LastGenOutput>
@@ -363,13 +364,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Login\Registered.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Registered.cshtml" />
     <Content Include="Views\tests\Create.cshtml" />
     <Content Include="Views\tests\Delete.cshtml" />
     <Content Include="Views\tests\Details.cshtml" />
     <Content Include="Views\tests\Edit.cshtml" />
     <Content Include="Views\tests\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_BirdSlavePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

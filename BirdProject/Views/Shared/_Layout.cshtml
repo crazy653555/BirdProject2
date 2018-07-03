@@ -9,30 +9,19 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#"><img src="~/Imgs/bird.png" alt="" style="height:20px" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("Index", "Bird")">鳥寶清單<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "BirdSlave")">鳥奴</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "Help")">API</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li><a class="nav-link" href="@Url.Action("Registered","Login")">註冊</a></li>
-                <li><a class="nav-link" href="@Url.Action("Login","Login")">登入</a></li>
-            </ul>
+            @Html.Partial("_BirdSlavePartial")
+            @Html.Partial("_loginPartial")
         </div>
     </nav>
 
@@ -40,6 +29,7 @@
     <div class="container body-content">
         @RenderBody()
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

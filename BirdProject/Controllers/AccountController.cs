@@ -8,7 +8,7 @@ using System.Web.Security;
 
 namespace BirdProject.Controllers
 {
-    public class LoginController : Controller
+    public class AccountController : Controller
     {
         BirdEntities db = new BirdEntities();
 

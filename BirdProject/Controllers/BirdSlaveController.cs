@@ -11,6 +11,7 @@ using BirdProject.Models;
 
 namespace BirdProject.Controllers
 {
+    [Authorize]
     public class BirdSlaveController : Controller
     {
         private BirdEntities db = new BirdEntities();

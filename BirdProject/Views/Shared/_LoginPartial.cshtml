@@ -1,0 +1,20 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <ul class="navbar-nav ml-auto">
+        <li>
+            <a class="nav-link" href="#">
+                <i class="material-icons">
+                    face
+                </i>@User.Identity.Name
+            </a>
+        </li>
+        <li><a class="nav-link" href="@Url.Action("Logout","Account")">登出</a></li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav ml-auto">
+        <li><a class="nav-link" href="@Url.Action("Registered","Account")">註冊</a></li>
+        <li><a class="nav-link" href="@Url.Action("Login","Account")">登入</a></li>
+    </ul>
+}

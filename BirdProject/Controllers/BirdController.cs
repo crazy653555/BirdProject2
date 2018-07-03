@@ -14,10 +14,11 @@ namespace BirdProject.Controllers
     public class BirdController : Controller
     {
         private BirdEntities db = new BirdEntities();
-
+       
         // GET: Bird
         public async Task<ActionResult> Index()
         {
+            ViewBag.V = User.Identity.Name;
             var b鳥 = db.B鳥.Include(b => b.B狀態).Include(b => b.B鳥奴).Include(b => b.B學名);
             return View(await b鳥.ToListAsync());
         }
